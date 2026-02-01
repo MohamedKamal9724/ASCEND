@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>ASCEND | Elite Fitness Protocol</title>
+    <link rel="icon" type="image/png" href="/LOGO.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            },
+            colors: {
+              background: 'var(--color-background)', 
+              surface: 'var(--color-surface)',    
+              surfaceHighlight: 'var(--color-surface-highlight)', 
+              primary: '#4f46e5',    // Indigo 600
+              primaryDark: '#4338ca', // Indigo 700
+              secondary: '#0d9488',  // Teal 600
+              accent: '#e11d48',     // Rose 600
+              text: 'var(--color-text)',
+              textMuted: 'var(--color-text-muted)',
+              border: 'var(--color-border)',
+            },
+            animation: {
+              'fade-in': 'fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'slide-up': 'slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scale-in': 'scale-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+            },
+            keyframes: {
+              'fade-in': {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              'slide-up': {
+                '0%': { transform: 'translateY(15px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              'scale-in': {
+                '0%': { transform: 'scale(0.98)', opacity: '0' },
+                '100%': { transform: 'scale(1)', opacity: '1' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              },
+              'pulse-glow': {
+                '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --color-background: #ffffff;
+        --color-surface: #ffffff;
+        --color-surface-highlight: #f8fafc;
+        --color-text: #0f172a;
+        --color-text-muted: #64748b;
+        --color-border: #e2e8f0;
+      }
+
+      .dark {
+        --color-background: #020617; /* Slate 950 */
+        --color-surface: #0f172a;    /* Slate 900 */
+        --color-surface-highlight: #1e293b; /* Slate 800 */
+        --color-text: #f8fafc;       /* Slate 50 */
+        --color-text-muted: #94a3b8; /* Slate 400 */
+        --color-border: #1e293b;     /* Slate 800 */
+      }
+
+      body {
+        background-color: var(--color-background);
+        color: var(--color-text);
+        -webkit-tap-highlight-color: transparent;
+        overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      .ambient-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(circle at 50% 0%, var(--color-surface-highlight) 0%, var(--color-background) 60%);
+        transition: opacity 0.3s ease;
+      }
+
+      ::-webkit-scrollbar { width: 6px; height: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+      
+      .dark ::-webkit-scrollbar-thumb { background: #475569; }
+      .dark ::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      }
+      .dark .glass {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2);
+      }
+      
+      .glass-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.05);
+      }
+
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+      .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #475569; }
+
+      input, select, textarea { font-family: inherit; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "path": "https://esm.sh/path@^0.12.7",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "url": "https://esm.sh/url@^0.11.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="selection:bg-primary/20 selection:text-primaryDark">
+    <div class="ambient-bg"></div>
+    <div id="root" class="relative z-10"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

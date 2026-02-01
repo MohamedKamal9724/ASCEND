@@ -1,0 +1,7 @@
+{
+  "name": "Kamal app",
+  "description": "Elite Coach-powered body visualization and performance tracking.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
